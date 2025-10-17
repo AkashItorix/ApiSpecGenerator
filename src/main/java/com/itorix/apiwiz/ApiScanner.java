@@ -151,15 +151,16 @@ public class ApiScanner {
                         } else if (parameterType.equals("byte")) {
                             schema.setType("string");
                             schema.setFormat("byte");
-                        }else if (parameterType.equals("httpheaders")) {
+                        }else if (parameterType.equals("httpheaders") || parameterType.equals("path")) {
                             schema.setType("object");
                         }else if (parameterType.equals("hashmap")) {
                             schema.setType("object");
                         }
-                        else if (parameterType.equals("multipartfile")) {
+                        else if (parameterType.equals("multipartfile") || parameterType.equals("file")) {
                             schema.setType("string");
                             schema.setFormat("binary");
-                        }else if(parameterType.equalsIgnoreCase("void")){
+                        }
+                        else if(parameterType.equalsIgnoreCase("void")){
                             schema = new Schema<>();
                         } else if (parameterType.equalsIgnoreCase("map")) {
                             schema.setType("object");
@@ -513,12 +514,12 @@ public class ApiScanner {
             } else if (parameterType.equals("byte")) {
                 items.setType("string");
                 items.setFormat("byte");
-            }else if (parameterType.equals("httpheaders")) {
+            }else if (parameterType.equals("httpheaders")  || parameterType.equals("path")) {
                 items.setType("object");
             }else if (parameterType.equals("hashmap")) {
                 items.setType("object");
             }
-            else if (parameterType.equals("multipartfile")) {
+            else if (parameterType.equals("multipartfile") || parameterType.equals("file")) {
                 items.setType("string");
                 items.setFormat("binary");
             }else if(parameterType.equalsIgnoreCase("void")){
@@ -612,10 +613,10 @@ public class ApiScanner {
                     jsonObject.setType("string");
                     jsonObject.setFormat("byte");
                 }
-                else if (parameterType.equals("httpheaders")) {
+                else if (parameterType.equals("httpheaders") || parameterType.equals("path")) {
                     jsonObject.setType("object");
                 }
-                else if (parameterType.equals("multipartfile")) {
+                else if (parameterType.equals("multipartfile") || parameterType.equals("file")) {
                     jsonObject.setType("string");
                     jsonObject.setFormat("binary");
                 }
